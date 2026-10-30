@@ -16,10 +16,10 @@ spec:
     spec:
       containers:
         - name: nodejs-app
-          image: nodejs-gitops:v1
+          image: bkrrajmali/blue-blueberry:v2
           imagePullPolicy: IfNotPresent   # use the image loaded into the cluster
           ports:
-            - containerPort: 3000
+            - containerPort: 80
           env:
             - name: APP_MESSAGE
               value: "Hello from GitOps!"
