@@ -2,19 +2,19 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: nodejs-app
-  namespace: argocd            # Applications always live in the argocd namespace
+  namespace: argocd
 spec:
   project: default
   source:
-    repoURL: https://github.com/<your-user>/gitops-nodejs-demo.git
-    targetRevision: main       # branch, tag or commit to track
-    path: k8s                  # folder with the manifests
+    repoURL: https://github.com/bkrrajmali/gitops-nodejs-demo.git
+    targetRevision: prod
+    path: k8s
   destination:
-    server: https://kubernetes.default.svc   # the same cluster Argo CD runs in
+    server: https://kubernetes.default.svc
     namespace: nodejs-app
   syncPolicy:
     automated:
-      prune: true              # delete resources removed from Git
-      selfHeal: true           # undo manual changes in the cluster
+      prune: true
+      selfHeal: true
     syncOptions:
-      - CreateNamespace=true   # create nodejs-app namespace if missing
+      - CreateNamespace=true
